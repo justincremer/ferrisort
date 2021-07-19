@@ -2,8 +2,8 @@ use super::Sorter;
 
 pub struct BubbleSort;
 
-impl Sorter for BubbleSort {
-    fn sort<T: Ord>(&self, slice: &mut [T]) {
+impl<T: Ord> Sorter<T> for BubbleSort {
+    fn sort(&self, slice: &mut [T]) {
         if slice.len() > 1 {
             let mut swapped = true;
             while swapped {

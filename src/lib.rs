@@ -1,25 +1,40 @@
-pub trait Sorter {
-    fn sort<T: Ord>(&self, slice: &mut [T]);
+mod bubble_sort;
+mod heap_sort;
+mod insertion_sort;
+mod quick_sort;
+mod radix_sort;
+mod selection_sort;
+
+pub use bubble_sort::BubbleSort;
+pub use heap_sort::HeapSort;
+pub use insertion_sort::InsertionSort;
+pub use quick_sort::QuickSort;
+pub use radix_sort::RadixSort;
+pub use selection_sort::SelectionSort;
+
+pub trait Sorter<T> {
+    fn sort(&self, slice: &mut [T])
+    where
+        T: Ord;
 }
 
-pub mod bubble_sort;
-pub mod heap_sort;
-pub mod insertion_sort;
-pub mod quick_sort;
-pub mod radix_sort;
-pub mod selection_sort;
+pub struct StdSort;
+impl<T: Ord> Sorter<T> for StdSort {
+    fn sort(&self, slice: &mut [T]) {
+        slice.sort();
+    }
+}
+
+pub struct StdUnstableSort;
+impl<T: Ord> Sorter<T> for StdUnstableSort {
+    fn sort(&self, slice: &mut [T]) {
+        slice.sort_unstable();
+    }
+}
 
 #[cfg(test)]
 mod std_sort {
-    use super::Sorter;
-
-    struct StdSort;
-
-    impl Sorter for StdSort {
-        fn sort<T: Ord>(&self, slice: &mut [T]) {
-            slice.sort();
-        }
-    }
+    use super::{Sorter, StdSort};
 
     #[test]
     fn works() {

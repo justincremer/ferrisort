@@ -5,3 +5,7 @@ edition = "2018"
 
 [dependencies]
 rand = "0.8.4"
+
+[[bin]]
+name = "benchmark"
+path = "src/bin/benchmark.rs"

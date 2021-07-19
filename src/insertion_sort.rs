@@ -2,8 +2,8 @@ use super::Sorter;
 
 pub struct InsertionSort;
 
-impl Sorter for InsertionSort {
-    fn sort<T: Ord>(&self, slice: &mut [T]) {
+impl<T: Ord> Sorter<T> for InsertionSort {
+    fn sort(&self, slice: &mut [T]) {
         for mut i in 1..slice.len() {
             while i > 0 && slice[i - 1] > slice[i] {
                 slice.swap(i - 1, i);

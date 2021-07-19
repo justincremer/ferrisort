@@ -2,8 +2,8 @@ use super::Sorter;
 
 pub struct RadixSort;
 
-impl Sorter for RadixSort {
-    fn sort<T: Ord>(&self, slice: &mut [T]) {}
+impl<T: Ord> Sorter<T> for RadixSort {
+    fn sort(&self, slice: &mut [T]) {}
 }
 
 #[test]

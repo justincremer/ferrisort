@@ -2,8 +2,8 @@ use super::Sorter;
 
 pub struct HeapSort;
 
-impl Sorter for HeapSort {
-    fn sort<T: Ord>(&self, slice: &mut [T]) {}
+impl<T: Ord> Sorter<T> for HeapSort {
+    fn sort(&self, slice: &mut [T]) {}
 }
 
 #[test]

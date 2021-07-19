@@ -2,8 +2,8 @@ use super::Sorter;
 
 pub struct QuickSort;
 
-impl Sorter for QuickSort {
-    fn sort<T: Ord>(&self, slice: &mut [T]) {
+impl<T: Ord> Sorter<T> for QuickSort {
+    fn sort(&self, slice: &mut [T]) {
         match slice.len() {
             0 | 1 => {}
             2 => {

@@ -2,8 +2,8 @@ use super::Sorter;
 
 pub struct SelectionSort;
 
-impl Sorter for SelectionSort {
-    fn sort<T: Ord>(&self, slice: &mut [T]) {
+impl<T: Ord> Sorter<T> for SelectionSort {
+    fn sort(&self, slice: &mut [T]) {
         for i in 0..slice.len() {
             let (xs_smallest, _) = slice[i..]
                 .iter()
